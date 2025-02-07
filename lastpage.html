@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/flower.css" />
+  </head>
+  <body>
+    <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
+    <div class="flower">
+      <div class="f-wrapper">
+        <div class="flower__line"></div>
+        <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div
+            class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
+          ></div>
+        </div>
+      </div>
+
+      <div class="f-wrapper f-wrapper--2">
+        <div class="flower__line"></div>
+        <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div
+            class="flower__leaf flower__leaf--8 flower__fall-down--pink"
+          ></div>
+        </div>
+      </div>
+
+      <div class="f-wrapper f-wrapper--3">
+        <div class="flower__line"></div>
+        <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div
+            class="flower__leaf flower__leaf--8 flower__fall-down--purple"
+          ></div>
+        </div>
+      </div>
+      <div class="flower__glass"></div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("LdXTz6nMARriAwCy7"); // Your EmailJS User ID
+  })();
+
+  function sendEmail() {
+    // Retrieve choices from localStorage
+    let date = localStorage.getItem("date") || "Not selected";
+    let food = JSON.parse(localStorage.getItem("food")) || [];
+    let dessert = JSON.parse(localStorage.getItem("dessert")) || [];
+    let activities = JSON.parse(localStorage.getItem("activities")) || [];
+
+    // Ensure values are properly formatted
+    food = food.length > 0 ? food.join(", ") : "Not selected";
+    dessert = dessert.length > 0 ? dessert.join(", ") : "Not selected";
+    activities = activities.length > 0 ? activities.join(", ") : "Not selected";
+
+    // Debugging logs
+    console.log("Date Selected:", date);
+    console.log("Food Selected:", food);
+    console.log("Dessert Selected:", dessert);
+    console.log("Activities Selected:", activities);
+
+    // Email parameters
+    let emailParams = {
+      to_name: "Shadab",
+      from_name: "https://bablu-1010.github.io/Velentines-day/",
+      from_email: "shaikhshadab2604@gmail.com",
+      date: date,
+      food: food,
+      dessert: dessert,
+      activities: activities
+    };
+
+    // Send email via EmailJS
+    emailjs.send("service_c1xe11c", "template_zenn5kc", emailParams)
+      .then(function (response) {
+        alert("Email sent successfully! ✅");
+        console.log("✔️ SUCCESS!", response.status, response.text);
+      })
+      .catch(function (error) {
+        alert("❌ Failed to send email: " + JSON.stringify(error));
+        console.error("❌ FAILED...", error);
+      });
+  }
+
+  window.onload = sendEmail; // Auto-send email when page loads
+</script>
+</html>

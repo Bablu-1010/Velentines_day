@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activities</title>
+    <link rel="stylesheet" href="css/activities.css" />
+  </head>
+  <body>
+    <div id="activityquestion"><b>What are we doing after?</b></div>
+    <div class="activities-selection">
+      <div class="activity-item">
+        <img src="activities/aquarium.jpeg" alt="aquarium" />
+        <label><input type="checkbox" name="activity" value="aquarium" />Aquarium</label>
+      </div>
+      <div class="activity-item">
+        <img src="activities/arcade.jpeg" alt="arcade" />
+        <label><input type="checkbox" name="activity" value="arcade" />Arcade</label>
+      </div>
+      <div class="activity-item">
+        <img src="activities/cinema.jpeg" alt="cinema" />
+        <label><input type="checkbox" name="activity" value="cinema" />Cinema</label>
+      </div>
+      <div class="activity-item">
+        <img src="activities/cst.jpg" alt="CST" />
+        <label><input type="checkbox" name="activity" value="CST" />CST</label>
+      </div>
+      <div class="activity-item">
+        <img src="activities/kunsthalle.jpeg" alt="exhibition" />
+        <label><input type="checkbox" name="activity" value="exhibition" />Exhibition</label>
+      </div>
+      <div class="activity-item">
+        <img src="activities/park.jpeg" alt="park" />
+        <label><input type="checkbox" name="activity" value="park" />Park</label>
+      </div>
+    </div>
+    
+    <button class="button" onclick="saveActivity(); location.href='lastpage.html';">
+      Last page
+    </button>
+  </body>
+
+  <script>
+    function saveActivity() {
+      let selectedActivities = [];
+      document.querySelectorAll('input[name="activity"]:checked').forEach((item) => {
+        selectedActivities.push(item.value);
+      });
+
+      if (selectedActivities.length > 0) {
+        localStorage.setItem("activities", JSON.stringify(selectedActivities));
+        console.log("Activities saved:", selectedActivities);
+      } else {
+        console.log("No activities selected.");
+      }
+    }
+  </script>
+</html>

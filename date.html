@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+    <link rel="stylesheet" href="css/date.css" />
+  </head>
+  <body>
+    <h1 title="choose a date">Are you free on ...</h1>
+    <form class="form-group" onsubmit="saveDate(event)">
+      <label>Which day: (select a date)</label>
+      <div>
+        <input type="date" id="selectedDate" required />
+        <button class="button" type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+
+  <script>
+    function saveDate(event) {
+      event.preventDefault(); // Prevent form from submitting immediately
+
+      let date = document.getElementById("selectedDate").value;
+      if (date) {
+        localStorage.setItem("date", date);
+        console.log("Date saved:", date);
+        
+        // Redirect after saving
+        window.location.href = "food.html";
+      } else {
+        alert("Please select a date!");
+      }
+    }
+  </script>
+</html>
